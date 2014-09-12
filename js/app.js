@@ -9,3 +9,14 @@ App.IndexRoute = Ember.Route.extend({
     return ['red', 'yellow', 'blue'];
   }
 });
+
+App.IndexController = Ember.ArrayController.extend({
+    renderedOn : function(){
+        return new Date();
+    }.property(),
+    actions:{
+        clickMe: function (){
+            alert("Clicked");
+        }
+    }
+});
