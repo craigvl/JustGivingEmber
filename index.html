@@ -18,13 +18,21 @@
   <script type="text/x-handlebars" id="index">
       <h2>Just Giving</h2>
         <ul>
-            {{#each item in model}}
-                <li>{{item}}</li>
+            {{#each category in model}}
+                <li>{{#link-to 'charity' category.id}}{{category.category}}{{/link-to}}</li>
             {{/each}}
         </ul>
       <p><button class="btn btn-success" {{action "clickMe"}}> Click me! </button>
       </p>
       <p>{{renderedOn}}</p>
+  </script>
+
+  <script type="text/x-handlebars" id="charity">
+      <ul>
+          {{#each category in model.charitySearchResults}}
+          <li>{{#link-to 'charity' category.charityId}}{{category.name}}{{/link-to}}</li>
+          {{/each}}
+      </ul>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
