@@ -1,7 +1,8 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  this.resource("charity",{path:"/charities/:category"})
+  this.resource("index",{path:"/"}),
+  this.resource("charity",{path:"charities/:category"})
 });
 
 App.IndexRoute = Ember.Route.extend({

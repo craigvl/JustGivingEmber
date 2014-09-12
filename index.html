@@ -11,12 +11,15 @@
 <body>
   <script type="text/x-handlebars">
     <div class="container">
+        <div class="row">
+        <h2>Just Giving</h2>
         {{outlet}}
         </div>
+    </div>
   </script>
 
   <script type="text/x-handlebars" id="index">
-      <h2>Just Giving</h2>
+      <div class="col-lg-3">
         <ul>
             {{#each category in model}}
                 <li>{{#link-to 'charity' category.id}}{{category.category}}{{/link-to}}</li>
@@ -25,14 +28,19 @@
       <p><button class="btn btn-success" {{action "clickMe"}}> Click me! </button>
       </p>
       <p>{{renderedOn}}</p>
+      </div>
   </script>
 
   <script type="text/x-handlebars" id="charity">
+      <div class="col-lg-9">
+      {{#link-to "index"}}Back{{/link-to}}
       <ul>
           {{#each category in model.charitySearchResults}}
           <li>{{#link-to 'charity' category.charityId}}{{category.name}}{{/link-to}}</li>
+          <p><img {{bind-attr src=category.logoUrl}} style="width:140px;height:140px" /></p>
           {{/each}}
       </ul>
+      </div>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
