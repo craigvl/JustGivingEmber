@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ember Starter Kit</title>
+  <title>Just giving</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="css/normalize.css">
@@ -12,14 +12,18 @@
   <script type="text/x-handlebars">
     <div class="container">
         <div class="row">
-        <h2>.</h2>
+        <h2>Just Giving</h2>
         {{outlet}}
         </div>
     </div>
   </script>
 
   <script type="text/x-handlebars" id="modelNotFound">
-    <p>Looks like there was an connection issues, how is your internet connection?</p>
+      <div class="alert alert-danger">
+    <p>Looks like there was an error, how is your internet connection?</p>
+          <p><button class="btn btn-success" {{action "clickMe"}}>Try Again! </button>
+          </p>
+      </div>
   </script>
 
   <script type="text/x-handlebars" id="index">

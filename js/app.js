@@ -6,20 +6,22 @@ App.Router.map(function() {
   this.resource("modelNotFound",{path:"/modelNotFound/"})
 });
 
+App.ModelNotFoundController = Ember.ArrayController.extend({
+    actions:{
+        clickMe: function () {
+            this.transitionToRoute('index');
+        }
+    }
+});
+
 App.IndexRoute = Ember.Route.extend({
   model: function() {
      return Ember.$.getJSON("http://localhost:3000/charity/categories",function (data) {
-         //alert(data[1].category);
         });
      },
     actions: {
     error: function(error, transition) {
-        //alert(err.title);
-        //alert(err);
-        //var j = JSON.parse(error);
-        //console.log(j);
-        //alert(j.message);
-        //this.transitionTo('modelNotFound');
+        this.transitionTo('modelNotFound');
          }
     }
 });
