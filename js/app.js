@@ -14,6 +14,8 @@ App.ModelNotFoundController = Ember.ArrayController.extend({
     }
 });
 
+App.LoadingRoute = Ember.Route.extend({});
+
 App.IndexRoute = Ember.Route.extend({
   model: function() {
      return Ember.$.getJSON("http://localhost:3000/charity/categories",function (data) {
