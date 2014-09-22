@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -39,7 +39,7 @@
       <div class="col-lg-3">
       <ul>
             {{#each category in model}}
-                <li>{{#link-to 'charity' category.id}}{{category.category}}{{/link-to}}</li>
+                <li>{{#link-to 'charities' category.id}}{{category.category}}{{/link-to}}</li>
             {{/each}}
         </ul>
       <p><button class="btn btn-success" {{action "clickMe"}}> Click me! </button>
@@ -48,17 +48,25 @@
       </div>
   </script>
 
-  <script type="text/x-handlebars" id="charity">
-      <div class="col-lg-9">
+  <script type="text/x-handlebars" id="charities">
+      <div class="col-lg-2">
       {{#link-to "index"}}Back{{/link-to}}
       <ul>
           {{#each category in model.charitySearchResults}}
           <li>{{#link-to 'charity' category.charityId}}{{category.name}}{{/link-to}}</li>
           <p><img {{bind-attr src=category.logoUrl}} style="width:140px;height:140px" /></p>
-          {{/each}}
-      </ul>
+          {{/each}}       
+      </ul>         
+      </div>
+      <div class="col-lg-10">
+          {{outlet}}
       </div>
   </script>
+
+    <script type="text/x-handlebars" id="charity">
+        {{description}}
+        <p>poo</p>
+    </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>

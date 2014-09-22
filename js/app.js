@@ -2,8 +2,11 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource("index",{path:"/"}),
-  this.resource("charity",{path:"charities/:category"}),
-  this.resource("modelNotFound",{path:"/modelNotFound/"})
+  this.resource("modelNotFound",{path:"/modelNotFound/"}),
+  this.resource("charities",{path:"/:category"}, function () {
+      this.resource("charity", { path: "/details/:charity" });
+  });
+
 });
 
 App.ModelNotFoundController = Ember.ArrayController.extend({
@@ -39,10 +42,26 @@ App.IndexController = Ember.ArrayController.extend({
     }
 });
 
-App.CharityRoute = Ember.Route.extend({
+App.CharitiesRoute = Ember.Route.extend({
     model: function(params) {
         //alert(JSON.stringify(params));
         return Ember.$.getJSON("http://localhost:3000/charity/" + params.category ,function (data) {
+        });
+    }
+});
+
+App.CharitiesIndexRoute = Ember.Route.extend({
+    model: function(params) {
+        //return this.modelFor('charities');
+        //return Ember.$.getJSON("http://localhost:3000/charitydetail/" + params.charityId, function (data) {
+        //});
+    }
+});
+
+App.CharityRoute = Ember.Route.extend({
+    model: function(params) {
+        //alert(JSON.stringify(params));
+        return Ember.$.getJSON("http://localhost:3000/charitydetail/" + params.charity ,function (data) {
         });
     }
 });
