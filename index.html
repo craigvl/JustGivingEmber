@@ -70,7 +70,7 @@
                 {{#link-to "index"}}Back{{/link-to}}
                 <ul>
                     {{#each category in model.charitySearchResults}}
-                    <li>{{#link-to 'charity' category.charityId}}{{category.name}}{{/link-to}}</li>
+                    <li>{{category.name}} {{#link-to 'charity' category.charityId}}View Details{{/link-to}} <a {{bind-attr href="https://www.justgiving.com/4w350m3/donation/direct/charity/"{{category.charityId}}}}>Donate</a></li>
                     <p><img {{bind-attr src=category.logoUrl}} style="width:140px;height:140px" /></p>
                     {{/each}}
                 </ul>
