@@ -66,15 +66,16 @@
 
     <script type="text/x-handlebars" id="charities">
         <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-7">
+            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-7">  
                 {{#link-to "index"}}Back{{/link-to}}
                 <ul>
-                    {{#each category in model.charitySearchResults}}
-                    <li>{{category.name}} {{#link-to 'charity' category.charityId}}View Details{{/link-to}} <a {{bind-attr href="https://www.justgiving.com/4w350m3/donation/direct/charity/"{{category.charityId}}}}>Donate</a></li>
-                    <p><img {{bind-attr src=category.logoUrl}} style="width:140px;height:140px" /></p>
+                    {{#each controller}}
+                    {{donationlink}}
+                    <li>{{name}} {{#link-to 'charity' charityId}}View Details{{/link-to}} </li>
+                    <p><img {{bind-attr src=logoUrl}} style="width:140px;height:140px" /></p>
                     {{/each}}
                 </ul>
-            </div>
+             </div>
             <div class="col-lg-10 col-md-8 col-sm-8 col-xs-5">
                 {{outlet}}
             </div>

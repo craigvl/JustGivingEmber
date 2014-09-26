@@ -9,6 +9,10 @@ App.Router.map(function() {
 
 });
 
+App.charitycategories = Ember.Object.extend({
+    donatelink: function () { return this.get('id');}
+});
+
 App.ModelNotFoundController = Ember.ArrayController.extend({
     actions:{
         clickMe: function () {
@@ -20,9 +24,15 @@ App.ModelNotFoundController = Ember.ArrayController.extend({
 App.LoadingRoute = Ember.Route.extend({});
 
 App.IndexRoute = Ember.Route.extend({
-  model: function() {
-     return Ember.$.getJSON("http://localhost:3000/charity/categories",function (data) {
-        });
+    model: function() {
+        return Ember.$.getJSON("http://localhost:3000/charity/categories").then(
+            function (response){
+                App.charitycategories = response;
+                //console.log(App.charitycategories[0].id);
+                console.log(App.charitycategories);
+                return App.charitycategories;
+            }
+        );
      },
     actions: {
     error: function(error, transition) {
@@ -42,12 +52,24 @@ App.IndexController = Ember.ArrayController.extend({
     }
 });
 
+
 App.CharitiesRoute = Ember.Route.extend({
     model: function(params) {
         //alert(JSON.stringify(params));
         return Ember.$.getJSON("http://localhost:3000/charity/" + params.category ,function (data) {
         });
     }
+});
+
+App.CharityController = Ember.ObjectController.extend({
+    donationlink: function () {
+        var duration = 'ffff' + this.get('name');
+        return duration;
+    }.property('donationlink')
+});
+
+App.CharitiesController = Ember.ArrayController.extend({
+    itemController: 'charity'
 });
 
 App.CharitiesIndexRoute = Ember.Route.extend({
