@@ -70,7 +70,7 @@
                 {{#link-to "index"}}Back{{/link-to}}
                 <ul>
                     {{#each controller}}
-                    {{donationlink}}
+                    <li> <a {{bind-attr href='donationlink'}} >Donate </a> </li>
                     <li>{{name}} {{#link-to 'charity' charityId}}View Details{{/link-to}} </li>
                     <p><img {{bind-attr src=logoUrl}} style="width:140px;height:140px" /></p>
                     {{/each}}

@@ -9,10 +9,6 @@ App.Router.map(function() {
 
 });
 
-App.charitycategories = Ember.Object.extend({
-    donatelink: function () { return this.get('id');}
-});
-
 App.ModelNotFoundController = Ember.ArrayController.extend({
     actions:{
         clickMe: function () {
@@ -63,7 +59,7 @@ App.CharitiesRoute = Ember.Route.extend({
 
 App.CharityController = Ember.ObjectController.extend({
     donationlink: function () {
-        var duration = 'ffff' + this.get('name');
+        var duration = 'http://www.justgiving.com/4w350m3/donation/direct/charity/' + this.get('charityId');
         return duration;
     }.property('donationlink')
 });
