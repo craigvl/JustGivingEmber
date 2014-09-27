@@ -40,15 +40,16 @@
         </div>
     </script>
 
-  <script type="text/x-handlebars" id="modelNotFound">
-      <div class="alert alert-danger">
-    <p>Looks like there was an error, how is your internet connection?</p>
-          <p><button class="btn btn-success" {{action "clickMe"}}>Try Again! </button>
-          </p>
-      </div>
-  </script>
+    <script type="text/x-handlebars" data-template-name="modelNotFound">
+        <div class="alert alert-danger">
+            <p>Looks like there was an error, how is your internet connection?</p>
+            <p>
+                <button class="btn btn-success" {{action "clickMe" }}>Try Again! </button>
+            </p>
+        </div>
+    </script>
 
-    <script type="text/x-handlebars" id="index">
+    <script type="text/x-handlebars" data-template-name="index">
         <div class="row">
             <div class="col-lg-3">
                 <ul>
@@ -61,29 +62,36 @@
                 </p>
                 <p>{{renderedOn}}</p>
             </div>
-         </div>
+        </div>
     </script>
 
-    <script type="text/x-handlebars" id="charities">
+    <script type="text/x-handlebars" data-template-name="charities">
         <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-7">  
+            <div class="col-lg-2 col-md-4 col-sm-4 col-xs-7">
                 {{#link-to "index"}}Back{{/link-to}}
                 <ul>
                     {{#each controller}}
-                    <li> <a {{bind-attr href='donationlink'}} >Donate </a> </li>
+                    <li> <a {{bind-attr href='donationlink' }}>Donate </a> </li>
                     <li>{{name}} {{#link-to 'charity' charityId}}View Details{{/link-to}} </li>
                     <p><img {{bind-attr src=logoUrl}} style="width:140px;height:140px" /></p>
                     {{/each}}
                 </ul>
-             </div>
+            </div>
             <div class="col-lg-10 col-md-8 col-sm-8 col-xs-5">
                 {{outlet}}
             </div>
         </div>
     </script>
 
-    <script type="text/x-handlebars" id="charity">
+    <script type="text/x-handlebars" data-template-name="charity">
         {{description}}
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="thanks">
+        <div>
+            Thank you!
+            {{donationid}}
+        </div>
     </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>

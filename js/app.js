@@ -2,11 +2,11 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource("index",{path:"/"}),
-  this.resource("modelNotFound",{path:"/modelNotFound/"}),
+  this.resource("modelNotFound", { path: "/modelNotFound/" }),
+  this.resource("thanks", { path: "/thanks/:donationid" }),
   this.resource("charities",{path:"/:category"}, function () {
       this.resource("charity", { path: "/details/:charity" });
   });
-
 });
 
 App.ModelNotFoundController = Ember.ArrayController.extend({
@@ -48,7 +48,6 @@ App.IndexController = Ember.ArrayController.extend({
     }
 });
 
-
 App.CharitiesRoute = Ember.Route.extend({
     model: function(params) {
         //alert(JSON.stringify(params));
@@ -59,7 +58,7 @@ App.CharitiesRoute = Ember.Route.extend({
 
 App.CharityController = Ember.ObjectController.extend({
     donationlink: function () {
-        var duration = 'http://www.justgiving.com/4w350m3/donation/direct/charity/' + this.get('charityId');
+        var duration = 'http://v3-sandbox.justgiving.com/4w350m3/donation/direct/charity/' + this.get('charityId') + '?exitUrl=http%3A%2F%2Flocalhost%3A6091%2F%23%2Fthanks%2FJUSTGIVING-DONATION-ID';
         return duration;
     }.property('donationlink')
 });
